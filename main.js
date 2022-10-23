@@ -1,4 +1,7 @@
-let canvas, sh, t
+let seed = typeof tokenData !== 'undefined' ? typeof tokenData === 'string' ? tokenData : tokenData.hash : getSeed()
+hash(seed)
+
+let canvas, sh, time
 
 function preload() {
     sh = loadShader('./shaders/vert.glsl', './shaders/frag.glsl')
@@ -17,11 +20,11 @@ function draw() {
     // sets the shader
     shader(sh)
 
-    t = millis() / 1000
+    time = millis() / 1000
 
     // updates shader uniforms
     sh.setUniform('uResolution', [width, height])
-    sh.setUniform('uTime', t)
+    sh.setUniform('uTime', time)
 
     // creates a shape with the shader applied
     rect(0, 0, width, height)
