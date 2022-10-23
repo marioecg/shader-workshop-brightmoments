@@ -1,3 +1,5 @@
+precision mediump float;
+
 attribute vec2 aTexCoord;
 attribute vec3 aPosition;
 
