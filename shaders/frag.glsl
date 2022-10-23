@@ -9,9 +9,8 @@ varying vec2 vUv;
 
 void main() {  
   vec2 uv = vUv;
-  vec2 st = (gl_FragCoord.xy - 0.5 * uResolution) / uResolution.y;
-
-  vec3 color = vec3(uv,step(vUv.x, cos(uTime) * 0.5 + 0.5));
+  
+  vec3 color = vec3(uv, 0.0);
   
   gl_FragColor = vec4(color, 1.0);
 }
