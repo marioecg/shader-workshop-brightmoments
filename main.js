@@ -1,10 +1,12 @@
 let seed = typeof tokenData !== 'undefined' ? typeof tokenData === 'string' ? tokenData : tokenData.hash : getSeed()
 hash(seed)
 
-let canvas, sh, time
+let canvas, shd, time
+let W = 500
+let H = 500
 
 function preload() {
-    sh = loadShader('./shaders/vert.glsl', './shaders/frag.glsl')
+    shd = loadShader('./shaders/vert.glsl', './shaders/frag.glsl')
 }
 
 function setup() {
@@ -12,26 +14,26 @@ function setup() {
     // which can create inconsistent scaling between displays
     pixelDensity(1)
 
-    canvas = createCanvas(500, 500, WEBGL)
+    canvas = createCanvas(W, H, WEBGL)
     noStroke()
 }
 
 function draw() {
     // sets the shader
-    shader(sh)
+    shader(shd)
 
     time = millis() / 1000
 
     // updates shader uniforms
-    sh.setUniform('uResolution', [width, height])
-    sh.setUniform('uTime', time)
+    shd.setUniform('uResolution', [W, H])
+    shd.setUniform('uTime', time)
 
     // creates a shape with the shader applied
-    rect(0, 0, width, height)
+    rect(0, 0, W, H)
 }
 
 function windowResized() {
-    resizeCanvas(500, 500)
+    resizeCanvas(W, H)
 
-    sh.setUniform('uResolution', [width, height])
+    shd.setUniform('uResolution', [W, H])
 }
