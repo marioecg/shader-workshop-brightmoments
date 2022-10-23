@@ -9,17 +9,26 @@
 </head>
 <body>
     <script src="https://cdn.jsdelivr.net/npm/ccapture.js@1.1.0/build/CCapture.all.min.js"></script>
-    <script>
-        let capture = new CCapture({
-            framerate: 5,
-            format: "webm",
-            name: "animation",
-            quality: 100,
-            verbose: true,
-        })
-    </script>
-
     <script src="https://cdn.jsdelivr.net/npm/p5@1.5.0/lib/p5.min.js"></script>
     <script src="main.js"></script>
+    <script>
+        // Save frame on CMD/CTRL + SHIF + S
+        window.addEventListener('keydown', (e) => {
+            if ((window.navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey) && e.keyCode == 83) {
+                e.preventDefault()
+
+                let date = new Date()
+                let year = date.getFullYear()
+                let month = date.getMonth() + 1
+                let day = date.getUTCDate()
+                let hour = date.getHours()
+                let mins = date.getMinutes()
+                let secs = date.getSeconds()
+
+                let timestamp = `${year}-${month}-${day}-${hour}-${mins}-${secs}`
+                save(canvas, timestamp)
+            }
+        }, false)        
+    </script>
 </body>
 </html>
