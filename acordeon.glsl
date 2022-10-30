@@ -24,7 +24,7 @@ void main() {
   //////////////////////////////////////////
 
   // CIRCULO
-  // Mover geometria en el espacio - dentro de abs (Ejemplo: vec2(uv.x + 0.5, uv.y - 0.3))
+  // Mover geometria en el espacio - dentro de length (Ejemplo: vec2(uv.x + 0.5, uv.y - 0.3))
   float circ = length(uv);
   // Function de step(borde, x)
   // Si x < borde ? 0.0 es resultado (negro) : de lo contrario 1.0 (blanco) 
