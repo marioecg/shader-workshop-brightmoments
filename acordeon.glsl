@@ -31,6 +31,7 @@ void main() {
   circ = step(0.25, circ);
   color += circ;
 
+
   // RECTANGULO O CUADRADO
   // Mover geometria en el espacio - dentro de abs (Ejemplo: uv.x + 0.2)
   // Expandir o reducir geometria rectangular - fuera de abs (Ejemplo: abs(uv.x) + 0.2)
