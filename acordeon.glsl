@@ -60,7 +60,7 @@ void main() {
   // GRADIENTES
   //////////////////////////////////////////
 
- float gradRadial = length(uv);
+  float gradRadial = length(uv);
   color += gradRadial;
 
   float gradLineal = uv.x;
