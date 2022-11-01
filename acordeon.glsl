@@ -23,12 +23,14 @@ void main() {
   // GEOMETRIAS BASICAS
   //////////////////////////////////////////
 
+  // GEOMETRIAS BLANCAS EN FONDO NEGRO
+
   // CIRCULO
   // Mover geometria en el espacio - dentro de length (Ejemplo: vec2(uv.x + 0.5, uv.y - 0.3))
   float circ = length(uv);
   // Function de step(borde, x)
   // Si x < borde ? 0.0 es resultado (negro) : de lo contrario 1.0 (blanco) 
-  circ = step(0.25, circ);
+  circ = step(circ, 0.45);
   color += circ;
 
 
@@ -39,7 +41,7 @@ void main() {
       abs(uv.x),
       abs(uv.y)
   );
-  rect = step(0.25, rect);
+  rect = step(rect, 0.42);
   color += rect;
 
 
@@ -50,10 +52,31 @@ void main() {
       abs(uv.x) + uv.y * tDiam,
       uv.y * -tDiam 
   );
-  trian = step(0.1, trian);
+  trian = step(trian, 0.23);
   color += trian;
 
 
+  //////////////////////////////////////////
+  // GRADIENTES
+  //////////////////////////////////////////
+
+ float gradRadial = length(uv);
+  color += gradRadial;
+
+  float gradLineal = uv.x;
+  color += gradLineal;
+
+  // Function de mix(x, y, a)
+  // x es el comienzo del rango
+  // y es el final del rango
+  // a es el valor de interpolacion
+  vec3 gradMix = mix(c1, c2, uv.x);
+  color += gradMix;
+
+
+  //////////////////////////////////////////
+  // SALIDA DE COLOR
+  //////////////////////////////////////////
 
   gl_FragColor = vec4(color, 1.0);
 }
