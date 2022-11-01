@@ -12,11 +12,15 @@ void main() {
   // COLORES
   //////////////////////////////////////////
 
-  vec3 c1 = vec3(0.0); // negro
-  vec3 c2 = vec3(1.0); // blanco
-  vec3 c3 = vec3(1.0, 0.0, 0.0); // rojo
-  vec3 c4 = vec3(0.0, 1.0, 0.0); // verde
-  vec3 c5 = vec3(0.0, 0.0, 1.0); // azul
+  // Valores de cada componente de color (rgb) son expresados en porcentajes (0% - 100%)
+  // Cada porcentaje es dividido entre 100% para obtener 
+  // un numero de punto flotante (Ejemplo: 100% / 100% = 1.0)
+
+  vec3 c1 = vec3(0.0); // negro - rgb(0%, 0%, 0%)
+  vec3 c2 = vec3(1.0); // blanco - rgb(100%, 100%, 100%)
+  vec3 c3 = vec3(1.0, 0.0, 0.0); // rojo - rgb(100%, 0%, 0%)
+  vec3 c4 = vec3(0.0, 1.0, 0.0); // verde - rgb(0%, 100%, 0%)
+  vec3 c5 = vec3(0.0, 0.0, 1.0); // azul - rgb(0%, 0%, 100%)
 
 
   //////////////////////////////////////////
