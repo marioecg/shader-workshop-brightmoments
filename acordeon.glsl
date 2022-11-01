@@ -41,7 +41,7 @@ void main() {
       abs(uv.x),
       abs(uv.y)
   );
-  rect = step(rect, 0.42);
+  rect = step(rect, 0.44);
   color += rect;
 
 
@@ -52,7 +52,7 @@ void main() {
       abs(uv.x) + uv.y * tDiam,
       uv.y * -tDiam 
   );
-  trian = step(trian, 0.23);
+  trian = step(trian, 0.225);
   color += trian;
 
 
