@@ -64,7 +64,9 @@ void main() {
   // GRADIENTES
   //////////////////////////////////////////
 
-  // LUMINOSIDAD Y SATURACION CONTINUA DE COLOR
+  // LUMINOSIDAD
+
+  // Entre mas luz refleja un color, mas luminoso (claro) se ve
 
   float gradRadial = length(uv);
   color += gradRadial;
@@ -73,6 +75,9 @@ void main() {
   color += gradLineal;
 
   // SATURACION CONTINUA DE COLOR
+
+  // Al combinar 2 colores saturados hay un punto medio en donde
+  // la saturacion no favorece a ninguno de los 2 colores combinados
 
   // Function de mix(x, y, a)
   // x es el comienzo del rango
