@@ -39,7 +39,6 @@ void main() {
   circ = step(circ, 0.45);
   color += circ;
 
-
   // RECTANGULO O CUADRADO
   // Mover geometria en el espacio - dentro de abs (Ejemplo: uv.x + 0.2)
   // Expandir o reducir geometria rectangular - fuera de abs (Ejemplo: abs(uv.x) + 0.2)
@@ -49,7 +48,6 @@ void main() {
   );
   rect = step(rect, 0.44);
   color += rect;
-
 
   // TRIANGULO
   // Mover geometria en el espacio - mover uv antes de definir geometria (Ejemplo: uv.x += 0.2)
@@ -66,11 +64,15 @@ void main() {
   // GRADIENTES
   //////////////////////////////////////////
 
+  // LUMINOSIDAD Y SATURACION CONTINUA DE COLOR
+
   float gradRadial = length(uv);
   color += gradRadial;
 
   float gradLineal = uv.x;
   color += gradLineal;
+
+  // SATURACION CONTINUA DE COLOR
 
   // Function de mix(x, y, a)
   // x es el comienzo del rango
