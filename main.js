@@ -3,12 +3,13 @@ let W = 500
 let H = 500
 
 function preload() {
+    // Carga los archivos del shader
     shd = loadShader('./shaders/vert.glsl', './shaders/frag.glsl')
 }
 
 function setup() {
-    // disable scaling for retina screens 
-    // which can create inconsistent scaling between displays
+    // Evita que la densidad escale en pantallas tipo retina
+    // que puede crear un escalado inconsistente entre monitores
     pixelDensity(1)
 
     canvas = createCanvas(W, H, WEBGL)
@@ -16,21 +17,22 @@ function setup() {
 }
 
 function draw() {
-    // sets the shader
+    // Asigna el shader
     shader(shd)
 
     time = millis() / 1000
 
-    // updates shader uniforms
-    shd.setUniform('uResolution', [W, H])
+    // Actualiza las uniformes
     shd.setUniform('uTime', time)
+    shd.setUniform('uResolution', [W, H])
 
-    // creates a shape with the shader applied
+    // Crea una figura que usa el shader
     rect(0, 0, W, H)
 }
 
 function windowResized() {
     resizeCanvas(W, H)
 
+    // Actualiza las uniformes
     shd.setUniform('uResolution', [W, H])
 }
