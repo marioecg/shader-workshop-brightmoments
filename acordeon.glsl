@@ -16,7 +16,7 @@ void main() {
 
   // Luz es utilizada para mostrar colores (rgb)
 
-  // PORCENTAJES DE RGB
+  // RGB EN PORCENTAJES
 
   // Valores de cada componente de color (rgb) son expresados en porcentajes (0% - 100%)
   // Cada porcentaje es dividido entre 100% para obtener 
