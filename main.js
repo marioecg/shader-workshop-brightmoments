@@ -10,7 +10,7 @@ function preload() {
 function setup() {
     // Evita que la densidad escale en pantallas tipo retina
     // que puede crear un escalado inconsistente entre monitores
-    pixelDensity(1)
+    pixelDensity(2)
 
     canvas = createCanvas(W, H, WEBGL)
     noStroke()
