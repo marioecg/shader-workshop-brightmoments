@@ -43,11 +43,14 @@ void main() {
   // color.g = 1.0;
   // color.b = 1.0;
 
-  // 1) Cómo puedes obtener otro color, por ejemplo el rojo, magenta o amarillo?
+  color = vec3(0.0);
+  vec2 fuv = fract(vUv * 5.0);
+  color.rg = fuv;
 
-  // 2) Usa las coordenadas provenientes del vertex para mostrar un gradiente de colores,
-  //    color = vec3(uv, 0.0);
-
+  // Cómo puedes obtener otro color, por ejemplo el rojo, magenta o amarillo? uv.x / uv.y
+  // uv.x = uv.x;
+  // uv.y = 1.0 - uv.y;
+  // color.rgb = vec3(sin(vUv.x * 30.0));
 
   // Color final de salida RGBA
   gl_FragColor = vec4(color, 1.0); 
