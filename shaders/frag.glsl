@@ -29,7 +29,7 @@ void main() {
   circle = smoothstep(sizePulse, 0.0, circle);
   color += circle;  
 
-  // Dar un poco de textura al color
+  // Damos un poco de textura al color
   float grain = random(vUv);
   color += grain * 0.05;
 
