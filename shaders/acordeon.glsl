@@ -90,6 +90,57 @@ void main() {
   vec3 gradMix = mix(c1, c2, uv.x);
   color += gradMix;
 
+  // PINTAR GEOMETRIAS Y FONDO
+
+  // Multiplicar un valor es como hacer un mask en PSD, AI en el area de luz (blanco)
+  // Aplicamos el gradiente al area de luz (blanco)
+  color *= gradMix;
+
+  // Aplicamos el gradiente a ambas areas, de luz (blanco) y oscuridad (negro)
+  // El area blanca tiene un gradiente mas tenue, que el area negra con un gradiente mas oscuro
+  color += gradMix;
+
+  // Aplicamos el gradiente al area de oscuridad (negro)
+  color = mix(gradMix, color, color);
+
+  // Aplicamos el gradiente al area de luz (blanco)
+  color = mix(color, gradMix, color);
+
+
+  //////////////////////////////////////////
+  // PATRONES MATEMATICOS
+  //////////////////////////////////////////
+
+  // PATRONES NEGROS EN FONDO BLANCO
+
+  // PATRON LINEAL CON LINEAS 
+  float lFreq = 5.0; // 5.0
+  float patronLineas = mod(uv.x * lFreq, 1.0);
+  // float patronLineas = fract(uv.x * lFreq);
+  patronLineas = step(0.5, patronLineas);
+  color += patronLineas;
+
+  // PATRON LINEAL CON RECTANGULO O CUADRADO 
+  float freqR = 10.0;
+  float patronRec = fract(
+    max(
+      abs(uv.x),
+      abs(uv.y)
+    )
+    * freqR
+  );
+  patronRec = step(0.5, patronRec);
+  color += patronRec;
+
+  // PATRON DE RETICULA CON RECTANGULO O CUADRADO 
+  float freqC = 5.0;
+  float patronRetRec = max(
+    abs(fract(uv.x * freqC)),
+    abs(fract(uv.y * freqC))
+  );
+  patronRetRec = step(0.5, patronRetRec);
+  color += patronRetRec;
+
 
   //////////////////////////////////////////
   // SALIDA DE COLOR
