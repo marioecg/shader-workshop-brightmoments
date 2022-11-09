@@ -1,6 +1,8 @@
 // Define la precisión de bits de los números de punto flotante
 precision mediump float; 
 
+#define PI 3.1415926538
+
 uniform float uTime;
 
 varying vec2 vUv;
@@ -15,25 +17,42 @@ float rect(vec2 st, vec2 size) {
   return uv.x * uv.y;
 }
 
+vec2 rotate(vec2 pos, float a) {
+  float s = sin(a);
+  float c = cos(a);
+  mat2 m = mat2(c, -s, s, c);
+  return m * pos;
+}
+
 void main() {    
   vec2 uv = vUv;
   float t = uTime;
 
-  // Color del cuadrado y del fondo
-  vec3 inner = vec3(0.937, 0.937, 0.937);
-  vec3 outer = vec3(0.835, 0.839, 0.839);
+  // Definimos los colores para el fondo y los cuadrados
+  vec3 background = vec3(0.902,0.894,0.875) * 0.85;
+  vec3 bigSquareColor = vec3(0.161,0.161,0.165);
+  vec3 smallSquareColor = vec3(0.639,0.349,0.306);
 
-  // Movemos un poco las coordenadas en Y para el cuadrado interior
-  vec2 suv = uv + vec2(0.0, 0.05);
-  vec2 size = vec2(0.45);
-  float square = rect(suv, size);
+  // Trasladamos un poco el sistema de coordenadas para el cuadrado grande
+  vec2 uv1 = uv + vec2(0.15, -0.15);
+  float bigSquare = rect(uv1, vec2(0.15));
 
-  // Mezclamos los colores en base al area del cuadrado
-  vec3 color = mix(outer, inner, square);
+  // Giramos el sistema alrededor del medio del canvas y despues lo trasladamos para crear el cuadro chico
+  vec2 uv2 = uv;
+  uv2 -= 0.5;
+  uv2 = rotate(uv2, PI * 0.075);
+  uv2 += 0.5;
+  uv2 += vec2(-0.0, 0.25);
+  float smallSquare = rect(uv2, vec2(0.05));
 
-  // Dar un poco de textura al color
+  // Combinamos los colores en base al area del cuadrado grande y chico
+  vec3 color = background;
+  color = mix(color, bigSquareColor, bigSquare);
+  color = mix(color, smallSquareColor, smallSquare);
+
+  // Damos un poco de textura al color
   float grain = random(vUv);
-  color += grain * 0.1;  
+  color += grain * 0.1;
 
   // Color final de salida RGBA
   gl_FragColor = vec4(color, 1.0); 
