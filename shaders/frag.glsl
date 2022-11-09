@@ -31,7 +31,7 @@ void main() {
   // Mezclamos los colores en base al area del cuadrado
   vec3 color = mix(outer, inner, square);
 
-  // Dar un poco de textura al color
+  // Damos un poco de textura al color
   float grain = random(vUv);
   color += grain * 0.1;  
 
